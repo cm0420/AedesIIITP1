@@ -1,5 +1,5 @@
 class SequentialNode:
-    def __initial__(self,key,data1,data2):
+    def __init__(self,key,data1,data2):
         # Inicializa um nó com uma chave e dois dado
         self.key= key
         self.data1= data1
@@ -16,7 +16,7 @@ class SequentialFList:
         # Adiciona o nó à lista (tree)
         self.tree.append(node)
     
-    def search_n_count(self, key):
+    def search_with_count(self, key):
          # Enumera cada nó da lista, com 'comparisons' contando o índice + 1
         for comparisons, node in enumerate(self.tree, start=1):
               # Verifica se a chave do nó atual é igual à chave de busca
@@ -24,5 +24,5 @@ class SequentialFList:
                 # Se encontrada, retorna o nó e a quantidade de comparações feitas
                 return node, comparisons
               # Se não encontrada, retorna None e o número total de comparações feitas
-            return None, comparisons
+        return None, comparisons
              # comparisons será o comprimento de self.tree se não encontrado

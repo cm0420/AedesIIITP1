@@ -13,7 +13,7 @@ def generate_unknown_keys(records, num_keys=15):
     # Gera chaves desconhecidas únicas até atingir a quantidade desejada
     while len(unknown_keys) < num_keys:
         # Gera uma nova chave dentro de um intervalo acima da chave máxima existente
-        new_key = random.randint(max_key + 1, max_key + 1000)
+        new_key = random.randint(max_key + 1, max_key + 10000)
         
         # Garante que a nova chave seja única e não esteja nas chaves existentes ou desconhecidas
         if new_key not in existing_keys and new_key not in unknown_keys:

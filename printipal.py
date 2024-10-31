@@ -12,7 +12,6 @@ from Random_Functions.random_data_file import generate_csv
 from functions.Ld_csv import load_csv
 from functions.sv_rprt import save_report
 
-
 def main ():
     sizes = [100, 500, 1000, 5000, 10000]
     report_data = []
@@ -30,7 +29,7 @@ def main ():
         sortedRecords = load_csv(sortedFilename)
         print("Data loaded successfully.")    
         trees ={
-        'sequential': {
+            'sequential': {
                 'random': SequentialFList(),
                 'sorted': SequentialFList()
             },
@@ -49,7 +48,7 @@ def main ():
             key, data1, data2 = record
             trees['sequential']['random'].insert(key, data1, data2)
             trees['binary']['random'].insert(key, data1, data2)
-            trees['avl']['random'].root = trees['avl']['random'].insert(trees['avl']['random'].root, key, data1, data2)
+            trees['avl']['random'].root = trees['avl']['random'].insert(key, data1, data2)
         print("Trees populated with random data.")
 
         print(f"Populating trees for sorted data of size {size}...")
@@ -57,7 +56,7 @@ def main ():
             key, data1, data2 = record
             trees['sequential']['sorted'].insert(key, data1, data2)
             trees['binary']['sorted'].insert(key, data1, data2)
-            trees['avl']['sorted'].root = trees['avl']['sorted'].insert(trees['avl']['sorted'].root, key, data1, data2)
+            trees['avl']['sorted'].root = trees['avl']['sorted'].insert(key, data1, data2)
         print("Trees populated with sorted data.")
 
         print("Selecting known and unknown keys for search tests...")
@@ -72,7 +71,7 @@ def main ():
 
                 for key in knownKeys:
                     start_time = time.perf_counter()
-                    _, comparisons = tree.search_with_count(root, key)
+                    _, comparisons = tree.search_with_count(key)
                     elapsed_time = (time.perf_counter() - start_time) * 1000
                     report_data.append([size, tree_type, variant, key, "known", comparisons, elapsed_time])
 
@@ -80,7 +79,7 @@ def main ():
 
                 for key in unknownKeys:
                     start_time = time.perf_counter()
-                    _, comparisons = tree.search_with_count(root, key)
+                    _, comparisons = tree.search_with_count(key)
                     elapsed_time = (time.perf_counter() - start_time) * 1000
                     report_data.append([size, tree_type, variant, key, "unknown", comparisons, elapsed_time])
     

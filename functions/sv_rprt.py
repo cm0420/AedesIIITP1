@@ -34,7 +34,7 @@ def save_report(report_data, filename="search_report.csv"):
                     
                     row_data = [size, file_type, search_type]
                     
-                    for tree_type in ["sequencial", "binary", "avl"]:
+                    for tree_type in ["sequential", "binary", "avl"]:
                         tree_data = next(
                             (item for item in filtered_data if item[1] == tree_type), 
                             None

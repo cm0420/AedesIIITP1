@@ -8,6 +8,7 @@ def generate_csv(size):
     os.makedirs(data_dir, exist_ok=True)
 
     records = []
+    
     for i in range(size):
         key = i + 1
         data1 = random.randint(1, 10000)
