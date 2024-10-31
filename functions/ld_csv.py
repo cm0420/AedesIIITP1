@@ -3,7 +3,7 @@ import os
 
 def load_csv(filename):
     file_path = os.path.join(os.path.dirname(__file__), '../data', filename)
-    data_records = []
+    records = []
     
     with open(file_path, mode='r') as file:
         reader = csv.reader(file)
@@ -12,6 +12,6 @@ def load_csv(filename):
             key = int(row[0])
             data1 = int(row[1])
             data2 = row[2]
-            data_records.append((key, data1, data2))
+            records.append((key, data1, data2))
     
-    return data_records
+    return records

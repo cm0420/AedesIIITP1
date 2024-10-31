@@ -1,8 +1,8 @@
 import random
 
-def generate_unknown_keys(data_records, count=15):
+def generate_unknown_keys(records, num_keys=15):
     # Cria um conjunto de chaves existentes a partir dos registros de dados
-    existing_keys = {record[0] for record in data_records}
+    existing_keys = {record[0] for record in records}
     
     # Encontra a chave máxima para começar a gerar novas chaves a partir de um intervalo mais alto
     max_key = max(existing_keys)
@@ -11,7 +11,7 @@ def generate_unknown_keys(data_records, count=15):
     unknown_keys = []
     
     # Gera chaves desconhecidas únicas até atingir a quantidade desejada
-    while len(unknown_keys) < count:
+    while len(unknown_keys) < num_keys:
         # Gera uma nova chave dentro de um intervalo acima da chave máxima existente
         new_key = random.randint(max_key + 1, max_key + 1000)
         
